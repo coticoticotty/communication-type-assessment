@@ -37,9 +37,9 @@ const form = document.createElement('form');
 form.id = "question";
 formArea.appendChild(form);
 
-for (let question_i = 1; question_i <= 20; question_i++) {
+for (let question_num = 1; question_num <= 20; question_num++) {
   const questionFrame = document.createElement('p');
-  questionFrame.innerText =`Q${question_i}. ${questions[question_i-1]}`;
+  questionFrame.innerText =`Q${question_num}. ${questions[question_num-1]}`;
   form.appendChild(questionFrame);
   for (let option_i = 1; option_i <= 5; option_i++){
     const row = document.createElement('input');
@@ -47,7 +47,7 @@ for (let question_i = 1; question_i <= 20; question_i++) {
     const textNode = document.createTextNode('');
     textNode.nodeValue = options[option_i-1];
     row.type = "radio";
-    row.name = `question${question_i}`;
+    row.name = `question${question_num}`;
     row.value = option_i;
     if (option_i === 3) {
       row.checked = true;
@@ -58,8 +58,28 @@ for (let question_i = 1; question_i <= 20; question_i++) {
   }
 }
 
-const question = document.getElementById('question').question1;
-
 assessmentButton.onclick = function() {
-  console.log(question.value);
+  let score = [];
+  for (let question_num = 1; question_num <= 20; question_num++) {
+    const key = `question${question_num}`;
+    const value = document.getElementById('question')[key].value;
+    score.push(parseInt(value));
+  }
+  const controlerScoreList = score.splice(0, 5);
+  const controlerScore = calculateSum(controlerScoreList);
+  console.log(`コントローラースコア: ${controlerScore}`);
+  const promoterScoreList = score.splice(0, 5);
+  const promoterScore = calculateSum(promoterScoreList);
+  console.log(`プロモータースコア: ${promoterScore}`);
+  const supporterScoreList = score.splice(0, 5);
+  const supporterScore = calculateSum(supporterScoreList);
+  console.log(`サポータースコア: ${supporterScore}`);
+  const analyzerScoreList = score.splice(0, 5);
+  const analyzerScore = calculateSum(analyzerScoreList);
+  console.log(`アナライザースコア: ${analyzerScore}`);
+}
+
+function calculateSum (scoreList) {
+  const sum = scoreList.reduce((a, b) => a + b, 0);
+  return sum;
 }
