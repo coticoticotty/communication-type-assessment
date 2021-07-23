@@ -1,5 +1,4 @@
 'use strict';
-const question1 = document.getElementById('question');
 const assessmentButton = document.getElementById('assessment');
 const formArea = document.getElementById('form-area');
 
@@ -26,29 +25,41 @@ const questions = [
   '自分の感情を表現したり相手に伝えることが苦手だ'
 ];
 
-const form = document.createElement('form');
-form.id = "question1";
-const questionFrame = document.createElement('p');
-questionFrame.innerText = questions[0];
-formArea.appendChild(form);
-formArea.appendChild(questionFrame);
+const options = [
+  "当てはまらない",
+  "あまり当てはまらない",
+  "どちらとも言えない",
+  "当てはまる",
+  "良く当てはまる"
+];
 
-for (let i = 1; i <= 4; i++){
-  const row = document.createElement('input');
-  const label = document.createElement('label');
-  row.type = "radio";
-  row.name = `question1`;
-  row.value = i;
-  label.innerText = i;
-  formArea.appendChild(row); 
-  formArea.appendChild(label); 
+const form = document.createElement('form');
+form.id = "question";
+formArea.appendChild(form);
+
+for (let question_i = 1; question_i <= 20; question_i++) {
+  const questionFrame = document.createElement('p');
+  questionFrame.innerText =`Q${question_i}. ${questions[question_i-1]}`;
+  form.appendChild(questionFrame);
+  for (let option_i = 1; option_i <= 5; option_i++){
+    const row = document.createElement('input');
+    const label = document.createElement('label');
+    const textNode = document.createTextNode('');
+    textNode.nodeValue = options[option_i-1];
+    row.type = "radio";
+    row.name = `question${question_i}`;
+    row.value = option_i;
+    if (option_i === 3) {
+      row.checked = true;
+    }
+    form.appendChild(label); 
+    label.appendChild(row); 
+    label.appendChild(textNode);
+  }
 }
 
+const question = document.getElementById('question').question1;
+
 assessmentButton.onclick = function() {
-  const answers1 = question.question1;
-  const answer1 = answers1.value;
-  console.log(answer1);
-  const answers2 = question.question2;
-  const answer2 = answers2.value;
-  console.log(answer2);
+  console.log(question.value);
 }
