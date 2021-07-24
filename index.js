@@ -1,7 +1,5 @@
 'use strict';
-const assessmentButton = document.getElementById('assessment');
 const formArea = document.getElementById('form-area');
-const resultArea = document.getElementById('result-area');
 
 const questions = [
   '何事も中途半端に終わらせることを好かない',
