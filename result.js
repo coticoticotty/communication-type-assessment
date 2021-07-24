@@ -35,6 +35,8 @@ assessmentButton.onclick = function() {
   const {x, y} = calc_coordinates(communicationScore);
 
   displayGraph(plotArea, x, y);
+
+  console.log(assess_communication_type(x, y));
 }
 
 /**
@@ -132,4 +134,42 @@ function calc_sum(score) {
   const analyzerScoreList = score.splice(0, 5);
   communicationScore['アナライザー'] = calculateSum(analyzerScoreList);
   return communicationScore;
+}
+
+/**
+ * 座標の位置から、コミュニケーションタイプを診断
+ * コントローラータイプ x <= -2.5 かつ y >= 2.5
+ * プロモータータイプ x >= 2.5 かつ y >= 2.5
+ * サポータータイプ x >= 2.5 かつ y <= -2.5
+ * アナライザータイプ x <= -2.5 かつ y <= -2.5
+ * プロコンタイプ y >= 2.5 かつ -2.5 < x < 2.5
+ * プロサポタイプ x >= 2.5 かつ -2.5 < y < 2.5
+ * アナサポタイプ y <= -2.5 かつ -2.5 < x < 2.5
+ * アナコンタイプ x <= -2.5 かつ -2.5 < y < 2.5
+ * バランサータイプ -2.5 < x < 2.5 かつ -2.5 < y < 2.5
+ * 
+ * @param {integer} x
+ * @param {integer} y
+ * @return {string}　コミュニケーションタイプを判定して返す。
+ */
+function assess_communication_type (x, y) {
+  if (x <= -2.5 && y >= 2.5){
+    return 'コントローラータイプ';
+  } else if (x >= 2.5 && y >= 2.5) {
+    return 'プロモータータイプ';
+  } else if (x >= 2.5 && y <= -2.5) {
+    return 'サポータータイプ';
+  } else if (x <= -2.5 && y <= -2.5) {
+    return 'アナライザータイプ';
+  } else if (y >= 2.5 && -2.5 < x < 2.5) {
+    return 'プロコンタイプ';
+  } else if (x >= 2.5 && -2.5 < y < 2.5) {
+    return 'プロサポタイプ';
+  } else if (y <= -2.5 && -2.5 < x < 2.5) {
+    return 'アナサポタイプ';
+  } else if (x <= -2.5 && -2.5 < y < 2.5) {
+    return 'アナコンタイプ';
+  } else if (-2.5 < x < 2.5 && -2.5 < y < 2.5) {
+    return 'バランサータイプ';
+  }
 }
