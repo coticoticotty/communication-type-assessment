@@ -12,10 +12,23 @@ assessmentButton.onclick = function() {
   }
 
   const communicationScore = calc_sum(score);
+  const {x, y} = calc_coordinates(communicationScore);
 
   const resultFrame = document.createElement('p');
-  resultFrame.innerText = '診断結果';
+  resultFrame.innerText = '《診断結果》';
   resultArea.appendChild(resultFrame);
+  const type = document.createElement('p');
+  type.innerText = `あなたは${assess_communication_type(x, y)}です。`;
+  resultArea.appendChild(type);
+
+  if (document.getElementById('canvas')) {document.getElementById('canvas').remove()};
+  const plotArea = document.createElement('canvas');
+  plotArea.id = 'canvas';
+  plotArea.width = '500';
+  plotArea.height = '500';
+  resultArea.appendChild(plotArea);
+  displayGraph(plotArea, x, y);
+
   const scoreFrame = document.createElement('ul');
   resultArea.appendChild(scoreFrame);
   for (let key in communicationScore) {
@@ -23,20 +36,6 @@ assessmentButton.onclick = function() {
     scoreList.innerText = `${key}スコア: ${communicationScore[key]}`;
     scoreFrame.appendChild(scoreList);  
   }
-
-  if (document.getElementById('canvas')) {document.getElementById('canvas').remove()};
-
-  const plotArea = document.createElement('canvas');
-  plotArea.id = 'canvas';
-  plotArea.width = '500';
-  plotArea.height = '500';
-  resultArea.appendChild(plotArea);
-
-  const {x, y} = calc_coordinates(communicationScore);
-
-  displayGraph(plotArea, x, y);
-
-  console.log(assess_communication_type(x, y));
 }
 
 /**
