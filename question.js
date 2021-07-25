@@ -41,7 +41,7 @@ start_button.onclick = function () {
   fragment.append(form);
   
   for (let question_num = 1; question_num <= 20; question_num++) {
-    const description = document.createElement('p');
+    const description = document.createElement('h3');
     description.innerText =`Q${question_num}. ${questions[question_num-1]}`;
     form.append(description);
     for (let option_i = 1; option_i <= 5; option_i++){
