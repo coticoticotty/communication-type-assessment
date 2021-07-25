@@ -1,58 +1,20 @@
 'use strict';
-const formArea = document.getElementById('form-area');
+window.onload = function() {
+  const display_area = document.getElementById('display-area');
 
-const questions = [
-  '何事も中途半端に終わらせることを好かない',
-  '限られた時間の中でできるだけ多くの物事を行おうとする',
-  '他人と比べて負けない・負けたくないという気持ちがある',
-  '自分の価値基準が明確にあり、異なる意見に対して自分の意見を言える',
-  '自分の考えや意見をそのまま口に出すことが多い',
-  '未来に対してパッションを持ち、もっと良くしていきたいと強く思っている',
-  '周りからは楽しい人だと思われている',
-  '失敗を恐れず、仮に失敗したとしても次に進もうと思える',
-  'よく自分の話ばかりをしすぎてしまう',
-  '変化を恐れず、新しい場所でもすぐに馴染める',
-  '相手のことを思ってしたことに対して感謝されないともどかしい気持ちになる',
-  '基本人から頼まれたことや誘われたことにはNOと言わない',
-  'よく自分と他人を比較する',
-  '相手が誰であろうと自分にできることは最大限提供しようとする',
-  '自分がやったことに対する他人からの評価をよく気にする',
-  '自分の意見や好き嫌いを発言することが苦手',
-  '人間関係において仲良くなるまで時間がかかる',
-  'まずは情報を集めてから意思決定を行う',
-  'どちらかと言うと人見知りをする方だ',
-  '自分の感情を表現したり相手に伝えることが苦手だ'
-];
+  const index_fragment = new DocumentFragment();
+  
+  const assessment_discription = document.createElement('p');
+  assessment_discription.innerText = "あなたのコミュニケーションタイプを診断します。以下の質問に直感的に回答してください。";
+  const start_button = document.createElement('button');
+  start_button.id = 'start_button';
+  start_button.innerText = '診断開始';
+  
+  index_fragment.append(assessment_discription);
+  index_fragment.append(start_button);
 
-const options = [
-  "当てはまらない",
-  "あまり当てはまらない",
-  "どちらとも言えない",
-  "当てはまる",
-  "良く当てはまる"
-];
-
-const form = document.createElement('form');
-form.id = "question";
-formArea.appendChild(form);
-
-for (let question_num = 1; question_num <= 20; question_num++) {
-  const questionFrame = document.createElement('p');
-  questionFrame.innerText =`Q${question_num}. ${questions[question_num-1]}`;
-  form.appendChild(questionFrame);
-  for (let option_i = 1; option_i <= 5; option_i++){
-    const row = document.createElement('input');
-    const label = document.createElement('label');
-    const textNode = document.createTextNode('');
-    textNode.nodeValue = options[option_i-1];
-    row.type = "radio";
-    row.name = `question${question_num}`;
-    row.value = option_i;
-    if (option_i === 3) {
-      row.checked = true;
-    }
-    form.appendChild(label); 
-    label.appendChild(row); 
-    label.appendChild(textNode);
-  }
+  const question_js = document.createElement('script');
+  question_js.src = "question.js";
+  index_fragment.append(question_js);
+  display_area.append(index_fragment);
 }

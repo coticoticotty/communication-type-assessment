@@ -1,9 +1,10 @@
 'use strict';
-const assessmentButton = document.getElementById('assessment');
-const resultArea = document.getElementById('result-area');
+const result_button = document.getElementById('result-button');
 
-assessmentButton.onclick = function() {
-  resultArea.innerText = "";
+result_button.onclick = function() {
+  const display_area = document.getElementById('display-area');  
+  let fragment = new DocumentFragment();
+
   let score = [];
   for (let question_num = 1; question_num <= 20; question_num++) {
     const key = `question${question_num}`;
@@ -11,31 +12,34 @@ assessmentButton.onclick = function() {
     score.push(parseInt(value));
   }
 
+  display_area.innerText = ""; // 説明文などの消去
+
   const communicationScore = calc_sum(score);
   const {x, y} = calc_coordinates(communicationScore);
 
-  const resultFrame = document.createElement('p');
+  const resultFrame = document.createElement('h2');
   resultFrame.innerText = '《診断結果》';
-  resultArea.appendChild(resultFrame);
+  fragment.append(resultFrame);
   const type = document.createElement('p');
   type.innerText = `あなたは${assess_communication_type(x, y)}です。`;
-  resultArea.appendChild(type);
+  fragment.append(type);
 
   if (document.getElementById('canvas')) {document.getElementById('canvas').remove()};
-  const plotArea = document.createElement('canvas');
-  plotArea.id = 'canvas';
-  plotArea.width = '500';
-  plotArea.height = '500';
-  resultArea.appendChild(plotArea);
-  displayGraph(plotArea, x, y);
+  const plot_area = document.createElement('canvas');
+  plot_area.id = 'canvas';
+  plot_area.width = '500';
+  plot_area.height = '500';
+  fragment.append(plot_area);
+  displayGraph(plot_area, x, y);
 
   const scoreFrame = document.createElement('ul');
-  resultArea.appendChild(scoreFrame);
+  fragment.append(scoreFrame);
   for (let key in communicationScore) {
     const scoreList = document.createElement('li');
     scoreList.innerText = `${key}スコア: ${communicationScore[key]}`;
     scoreFrame.appendChild(scoreList);  
   }
+  display_area.append(fragment);
 }
 
 /**
@@ -97,16 +101,16 @@ function calc_coordinates(communicationScore) {
  * 最小 (60, 60)
  * 最大 (410, 410)
  * yは正の値でときに下に移動するので注意。
- * @param {object} plotArea 
+ * @param {object} plot_area 
  * @param {integer} x 
  * @param {ineger} y 
  */
-function displayGraph(plotArea, x, y) {
-  const ctx=plotArea.getContext('2d');
+function displayGraph(plot_area, x, y) {
+  const ctx=plot_area.getContext('2d');
   const img = new Image();
   img.onload = function(){
     ctx.drawImage(img,0,0, 500, 500);
-    ctx.fillStyle = "#f72da574";
+    ctx.fillStyle = "#f72da5a5";
     ctx.fillRect(235 + 35*x, 235 - 35*y, 30, 30);
   };
   img.src = 'communication-type.png';
