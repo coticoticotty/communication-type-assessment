@@ -1,5 +1,9 @@
 'use strict';
 const result_button = document.getElementById('result-button');
+const move_top_button = document.createElement('button');
+move_top_button.id = 'move-top-button';
+move_top_button.innerText = "もう一度診断する";
+
 
 result_button.onclick = function() {
   const display_area = document.getElementById('display-area');  
@@ -40,12 +44,18 @@ result_button.onclick = function() {
     scoreFrame.appendChild(scoreList);  
   }
   display_area.append(fragment);
-
-  const move_top_button = document.createElement('button');
-  move_top_button.id = 'move-top-button';
-  move_top_button.innerText = "もう一度診断する";
-
   display_area.append(move_top_button);
+}
+
+move_top_button.onclick = function () {
+  doReload();
+}  
+
+/**
+ * ページを再読み込みする関数
+ */
+function doReload() {
+  window.location.reload();
 }
 
 /**
