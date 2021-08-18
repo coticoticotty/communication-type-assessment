@@ -1,5 +1,5 @@
 'use strict';
-const start_button = document.getElementById('start_button');
+const start_button = document.getElementById('start-button');
 
 const questions = [
   '何事も中途半端に終わらせることを好かない',
