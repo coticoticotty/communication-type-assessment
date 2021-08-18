@@ -72,7 +72,6 @@ canvas {
 
 #appendix {
   margin-top: 2rem;
-  margin-bottom: 2rem;
   margin-left: 1%;
   margin-right: 1%;
   padding-top: 0.5rem;
@@ -85,29 +84,40 @@ canvas {
 }
 
 .button-wrapper {
+  margin-top: 2rem;
   text-align: center;
 }
 
 .button-wrapper button{
   display: inline-block;
   line-height: 3rem;
-  font-size: 2rem;
+  font-size: 1.7rem;
   margin-right: auto;
   margin-left: auto;
   padding: 0.5em 1em;
   text-decoration: none;
   color: #FFF;
-  border-bottom: solid 4px #627295;
   border-radius: 3px;
 }
 
-#start-button {
-  background: #668ad8;/*ボタン色*/
-}
-
-#start_button:active {
+.button-wrapper button:active {
   /*ボタンを押したとき*/
   -webkit-transform: translateY(4px);
   transform: translateY(4px);/*下に動く*/
   border-bottom: none;/*線を消す*/
+}
+
+#start-button {
+  border-bottom: solid 4px #627295;
+  background: #668ad8;/*ボタン色*/
+}
+
+#result-button {
+  border-bottom: solid 4px #9d4851;
+  background: #d6636f;/*ボタン色*/
+}
+
+#move-top-button {
+  border-bottom: solid 4px #28712b;
+  background: #24ae2a;/*ボタン色*/
 }

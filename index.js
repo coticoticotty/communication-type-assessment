@@ -65,7 +65,7 @@ window.onload = function() {
   button_area_elem.className = "button-wrapper";
   const start_button = document.createElement('button');
   start_button.id = 'start-button';
-  start_button.innerText = '診断開始';
+  start_button.innerText = '診断開始！';
   button_area_elem.append(start_button);
   index_fragment.append(button_area_elem);
 

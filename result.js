@@ -1,8 +1,12 @@
 'use strict';
 const result_button = document.getElementById('result-button');
+
+const button_area_elem = document.createElement('div');
+button_area_elem.className = "button-wrapper";
 const move_top_button = document.createElement('button');
 move_top_button.id = 'move-top-button';
-move_top_button.innerText = "もう一度診断する";
+move_top_button.innerText = 'もう一度診断する';
+button_area_elem.append(move_top_button);
 
 
 result_button.onclick = function() {
@@ -21,9 +25,9 @@ result_button.onclick = function() {
   const communicationScore = calc_sum(score);
   const {x, y} = calc_coordinates(communicationScore);
 
-  const resultFrame = document.createElement('h2');
-  resultFrame.innerText = '《診断結果》';
-  fragment.append(resultFrame);
+  const result_frame_elem = document.createElement('h2');
+  result_frame_elem.innerText = '《診断結果》';
+  fragment.append(result_frame_elem);
   const type = document.createElement('p');
   type.innerText = `あなたは${assess_communication_type(x, y)}です。`;
   fragment.append(type);
@@ -44,7 +48,7 @@ result_button.onclick = function() {
     scoreFrame.appendChild(scoreList);  
   }
   display_area.append(fragment);
-  display_area.append(move_top_button);
+  display_area.append(button_area_elem);
 }
 
 move_top_button.onclick = function () {

@@ -47,6 +47,7 @@ start_button.onclick = function () {
     for (let option_i = 1; option_i <= 5; option_i++){
       const radio_button = document.createElement('input');
       const label = document.createElement('label');
+      label.className = "radio-button";
       const textNode = document.createTextNode('');
       textNode.nodeValue = options[option_i-1];
       radio_button.type = "radio";
@@ -60,10 +61,13 @@ start_button.onclick = function () {
       label.appendChild(textNode);
     }
   }
+  const button_area_elem = document.createElement('div');
+  button_area_elem.className = "button-wrapper";
   const result_button = document.createElement('button');
   result_button.id = 'result-button';
   result_button.innerText = "診断結果を見る";
-  fragment.append(result_button);
+  button_area_elem.append(result_button);
+  fragment.append(button_area_elem);
 
   const result_js = document.createElement('script');
   result_js.src = "result.js";
