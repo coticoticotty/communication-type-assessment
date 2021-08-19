@@ -10,6 +10,7 @@ button_area_elem.append(move_top_button);
 
 
 result_button.onclick = function() {
+	window.scroll({top: 0, behavior: 'instant'});
   const display_area = document.getElementById('display-area');  
   let fragment = new DocumentFragment();
 
@@ -24,12 +25,13 @@ result_button.onclick = function() {
 
   const communicationScore = calc_sum(score);
   const {x, y} = calc_coordinates(communicationScore);
+  const communication_type = assess_communication_type(x, y);
 
   const result_frame_elem = document.createElement('h2');
   result_frame_elem.innerText = '《診断結果》';
   fragment.append(result_frame_elem);
   const type = document.createElement('p');
-  type.innerText = `あなたは${assess_communication_type(x, y)}です。`;
+  type.innerText = `あなたは${communication_type}です。`;
   fragment.append(type);
 
   if (document.getElementById('canvas')) {document.getElementById('canvas').remove()};
@@ -39,6 +41,10 @@ result_button.onclick = function() {
   plot_area.height = '500';
   fragment.append(plot_area);
   displayGraph(plot_area, x, y);
+
+  const score_frame_h3 = document.createElement('h3');
+  score_frame_h3.innerText = "スコア";
+  fragment.append(score_frame_h3);
 
   const scoreFrame = document.createElement('ul');
   fragment.append(scoreFrame);
@@ -53,6 +59,7 @@ result_button.onclick = function() {
 
 move_top_button.onclick = function () {
   doReload();
+	window.scroll({top: 0, behavior: 'instant'});
 }  
 
 /**

@@ -16,7 +16,7 @@ h1 {
   text-align: center;
 }
 
-h1:before {
+h1::before {
   position: absolute;
   top: -7px;
   left: -7px;
@@ -31,7 +31,7 @@ h2 {
   padding: 1rem .5rem;
 }
 
-h2:after {
+h2::after {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -48,7 +48,7 @@ h3 {
   padding: 1.5rem 1rem;
 }
 
-h3:after {
+h3::after {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -120,4 +120,8 @@ canvas {
 #move-top-button {
   border-bottom: solid 4px #28712b;
   background: #24ae2a;/*ボタン色*/
+}
+
+.radio-button {
+  display:block;
 }

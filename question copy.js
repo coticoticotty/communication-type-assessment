@@ -2,26 +2,26 @@
 const start_button = document.getElementById('start-button');
 
 const questions = [
-  '何事もしっかりやり遂げないと気がすまない',
-  '情報を伝えるときは要点をまとめて結論から教えて欲しい',
-  '競争心が強い・負けん気がある',
-  '自分の弱みは決して人に見せない',
-  '自分の考えや意見を率直に人に伝えることができる',
-  '計画を立てて動くことが苦手だ',
-  '周囲から、楽しい人だと思われている',
-  '失敗してもくよくよしない・立ち直りが早い',
-  '話を聞くよりも、自分の話ばかりをしてしまう',
-  '新しいことにチャレンジすることが好きだ',
-  '相手のためにやったことが感謝されないと嫌な気持ちになる',
-  '相手の心情を考えるあまり、言いたいことが言えないことがよくある',
-  '頼まれごとや誘いを断ることが苦手だ',
+  '何事も中途半端に終わらせることを好かない',
+  '限られた時間の中でできるだけ多くの物事を行おうとする',
+  '他人と比べて負けない・負けたくないという気持ちがある',
+  '自分の価値基準が明確にあり、異なる意見に対して自分の意見を言える',
+  '自分の考えや意見をそのまま口に出すことが多い',
+  '未来に対してパッションを持ち、もっと良くしていきたいと強く思っている',
+  '周りからは楽しい人だと思われている',
+  '失敗を恐れず、仮に失敗したとしても次に進もうと思える',
+  'よく自分の話ばかりをしすぎてしまう',
+  '変化を恐れず、新しい場所でもすぐに馴染める',
+  '相手のことを思ってしたことに対して感謝されないともどかしい気持ちになる',
+  '基本人から頼まれたことや誘われたことにはNOと言わない',
   'よく自分と他人を比較する',
-  '人をサポートすることが好きだ',
-  '自分の考えや感情を人に話すことが苦手だ',
-  'ルーティーンワークは苦にならない',
-  '計画通りに実行することが好きだ',
-  '1人でいることが苦ではない',
-  '納得できる理由でない限り、褒められても嬉しさを感じない'
+  '相手が誰であろうと自分にできることは最大限提供しようとする',
+  '自分がやったことに対する他人からの評価をよく気にする',
+  '自分の意見や好き嫌いを発言することが苦手',
+  '人間関係において仲良くなるまで時間がかかる',
+  'まずは情報を集めてから意思決定を行う',
+  'どちらかと言うと人見知りをする方だ',
+  '自分の感情を表現したり相手に伝えることが苦手だ'
 ];
 
 const options = [
@@ -33,15 +33,9 @@ const options = [
 ];
 
 start_button.onclick = function () {
-	window.scroll({top: 0, behavior: 'instant'});
   const display_area = document.getElementById('display-area');  
   display_area.innerText = ""; // 説明文などの消去
   let fragment = new DocumentFragment();
-
-  const page_desc_elem = document.createElement('p');
-  page_desc_elem.innerText = "以下の質問に回答してください。コミュニケーションの傾向は環境によって大きく変わるため、特定の環境を想定して回答することをおすすめします。（例：職場にいる自分、学校にいる自分など）";
-  fragment.append(page_desc_elem);
-
   const form = document.createElement('form');
   form.id = "question";
   fragment.append(form);
@@ -54,7 +48,9 @@ start_button.onclick = function () {
       const radio_button = document.createElement('input');
       const label = document.createElement('label');
       label.className = "radio-button";
-      const text_node = document.createTextNode(options[option_i-1]);
+      const text_area = document.createElement('div');
+      text_area.innerText = options[option_i-1];
+      text_area.className = "radio-text";
       radio_button.type = "radio";
       radio_button.name = `question${question_num}`;
       radio_button.value = option_i;
@@ -63,7 +59,7 @@ start_button.onclick = function () {
       }
       form.append(label); 
       label.appendChild(radio_button); 
-      label.appendChild(text_node); 
+      label.appendChild(text_area);
     }
   }
   const button_area_elem = document.createElement('div');
