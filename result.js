@@ -8,6 +8,17 @@ move_top_button.id = 'move-top-button';
 move_top_button.innerText = 'もう一度診断する';
 button_area_elem.append(move_top_button);
 
+const result = {
+  "コントローラータイプ": "コントローラータイプのあなたは、頭の回転が速く、目標達成にコミットできる仕事人タイプです。自己主張が強い反面、他者の感情に寄り添うことは苦手なため、怖い人と思われやすい傾向にあります。負けん気が強く成果を出すことや勝負事には誰よりも熱心に取り組むことができます。",
+  "プロモータータイプ": "プロモータータイプのあなたは、明るく元気にみんなを引っ張るリーダータイプです。細かいことを確実にやることは苦手ですが、アイデアマンで",
+  "サポータータイプ": "サポータータイプのあなたは",
+  "アナライザータイプ": "アナライザータイプ",
+  "プロコンタイプ": "プロモータータイプとコントローラータイプを領有するあなたは、",
+  "プロサポタイプ": "プロモータータイプとサポータータイプを両有するあなたは、エネルギッシュでありつつも、他者への配慮も忘れない、理解力のあるリーダータイプです。",
+  "アナサポタイプ": "アナライザータイプとサポータータイプを両有するあなたは、客観的・論理的に考えることに長けながら、他者への配慮も忘れない、優しい先輩タイプです。ただし、感情や意見をストレートにぶつけてくる相手が　苦手な傾向にあります。ただし、相手の感情に寄り添うことは苦手なため、",
+  "アナコンタイプ": "アナライザータイプとコントローラータイプを両有するあなたは、ロジカルに戦略を立て、目標達成にコミットができる仕事人です。頭の回転が早く、物言いも率直なため、周囲の人から怖い人と思われがちです。ただし、明晰な頭脳と強い意志を持って物事に取り組むことができるため、優秀でパフォーマンスの高く、組織や管理職には欠かせない存在です。",
+  "バランサータイプ": "全てのタイプを有するあなたは、全てタイプの人に対応できる万能型です。おそらく、さまざまなタイプに適応せざるを得ないような環境で過ごしてきた経験があるのでしょう。もしくは、自己理解が足りない可能性があります。具体的な環境を思い浮かべた上で、改めて回答してみるのも良いかもしれません。"
+};
 
 result_button.onclick = function() {
 	window.scroll({top: 0, behavior: 'instant'});
@@ -30,9 +41,13 @@ result_button.onclick = function() {
   const result_frame_elem = document.createElement('h2');
   result_frame_elem.innerText = '《診断結果》';
   fragment.append(result_frame_elem);
-  const type = document.createElement('p');
-  type.innerText = `あなたは${communication_type}です。`;
+  const type = document.createElement('h3');
+  type.innerText = `あなたは${communication_type}です`;
   fragment.append(type);
+
+  const type_description_elem = document.createElement('p');
+  type_description_elem.innerText = result[communication_type];
+  fragment.append(type_description_elem);
 
   if (document.getElementById('canvas')) {document.getElementById('canvas').remove()};
   const plot_area = document.createElement('canvas');
@@ -54,6 +69,16 @@ result_button.onclick = function() {
     scoreFrame.appendChild(scoreList);  
   }
   display_area.append(fragment);
+
+  const disclaimer_elem = document.createElement('div');
+  disclaimer_elem.id = "disclaimer";
+  const disclaimer = `【免責事項】
+    当サイトの情報・診断について、さまざまな情報を参照し作成しておりますが、正確性や安全性を保証するものではありません。また、当サイトに掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。`;
+  const desc_elem_about_disclaimer = document.createElement('p');
+  desc_elem_about_disclaimer.innerText = disclaimer;
+  disclaimer_elem.append(desc_elem_about_disclaimer);
+  display_area.append(disclaimer_elem);
+
   display_area.append(button_area_elem);
 }
 

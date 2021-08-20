@@ -68,6 +68,7 @@ canvas {
   background-color: #eee;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2rem;
 }
 
 #appendix {
@@ -124,4 +125,18 @@ canvas {
 
 .radio-button {
   display:block;
+}
+
+#disclaimer {
+  font-size: 0.8rem;
+  margin-top: 2rem;
+  margin-left: 1%;
+  margin-right: 1%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 2%;
+  padding-right: 2%;
+  background-color: #ced7f2;
+  outline: 2px dotted gray;
+  outline-offset: -10px;
 }
