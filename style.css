@@ -1,12 +1,35 @@
-.top {
-  margin-left: 20%;
-  margin-right: 20%;
+@media screen and (min-width: 767px) {
+  .top {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+
+  #display-area {
+    padding-top: 1rem;
+    padding-right: 15%;
+    padding-left: 15%;
+  }  
 }
 
-#display-area {
-  padding-top: 1rem;
-  padding-right: 20%;
-  padding-left: 20%;
+@media screen and (max-width: 767px) and (min-width: 481px) {
+  .top {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  #display-area {
+    padding-top: 1rem;
+    padding-right: 10%;
+    padding-left: 10%;
+  }  
+}
+
+@media screen and (max-width: 480px) {
+  #display-area {
+    padding-top: 1rem;
+    padding-right: 3%;
+    padding-left: 3%;
+  }
 }
 
 h1 {
