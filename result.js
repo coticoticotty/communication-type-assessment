@@ -1,6 +1,7 @@
 'use strict';
 const result_button = document.getElementById('result-button');
 
+//もう一度診断するボタンを表示
 const button_area_elem = document.createElement('div');
 button_area_elem.className = "button-wrapper";
 const move_top_button = document.createElement('button');
@@ -74,7 +75,7 @@ result_button.onclick = function() {
   const disclaimer_elem = document.createElement('div');
   disclaimer_elem.id = "disclaimer";
   const disclaimer = `【免責事項】
-    当サイトの情報・診断について、さまざまな情報を参照し作成しておりますが、正確性や安全性を保証するものではありません。また、当サイトに掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。`;
+    当サイトの情報・診断について、さまざまな情報を参照し作成しておりますが、正確性を保証するものではありません。また、当サイトに掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。`;
   const desc_elem_about_disclaimer = document.createElement('p');
   desc_elem_about_disclaimer.innerText = disclaimer;
   disclaimer_elem.append(desc_elem_about_disclaimer);
@@ -87,6 +88,9 @@ move_top_button.onclick = function () {
   doReload();
 	window.scroll({top: 0, behavior: 'instant'});
 }  
+
+// <a href="https://twitter.com/intent/tweet?button_hashtag=コミュニケーションタイプ診断&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #コミュニケーションタイプ診断</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
 /**
  * ページを再読み込みする関数

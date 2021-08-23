@@ -34,46 +34,51 @@ const options = [
 
 start_button.onclick = function () {
 	window.scroll({top: 0, behavior: 'instant'});
+
   const display_area = document.getElementById('display-area');  
   display_area.innerText = ""; // 説明文などの消去
+
   let fragment = new DocumentFragment();
 
-  const page_desc_elem = document.createElement('p');
-  page_desc_elem.innerText = "以下の質問に回答してください。コミュニケーションの傾向は環境によって大きく変わるため、特定の環境を想定して回答することをおすすめします。（例：職場にいる自分、学校にいる自分など）";
+  // ページの概要説明
+  const page_desc = "以下の質問に回答してください。コミュニケーションの傾向は環境によって大きく変わるため、特定の環境を想定して回答することをおすすめします。（例：職場にいる自分、学校にいる自分など）";
+  const page_desc_elem = create_element('p', '', '', page_desc);
   fragment.append(page_desc_elem);
 
-  const form = document.createElement('form');
-  form.id = "question";
+  const form = create_element('form', 'question', '', '');
   fragment.append(form);
   
+  // 質問項目を表示
   for (let question_num = 1; question_num <= 20; question_num++) {
-    const description = document.createElement('h3');
-    description.innerText =`Q${question_num}. ${questions[question_num-1]}`;
-    form.append(description);
+    const question = `Q${question_num}. ${questions[question_num-1]}`
+    const question_elem = create_element('h3', '', '', question);
+    form.append(question_elem);
+
+    // ラジオボタン。選択項目の追加
     for (let option_i = 1; option_i <= 5; option_i++){
-      const radio_button = document.createElement('input');
-      const label = document.createElement('label');
-      label.className = "radio-button";
-      const text_node = document.createTextNode(options[option_i-1]);
-      radio_button.type = "radio";
-      radio_button.name = `question${question_num}`;
-      radio_button.value = option_i;
+      const radio_button_elem = document.createElement('input');
+      radio_button_elem.type = "radio";
+      radio_button_elem.name = `question${question_num}`;
+      radio_button_elem.value = option_i;
+
+      const label_elem = create_element('label', '', 'radio-button', '');
+      const options_elem = create_node(options[option_i-1]);
       if (option_i === 3) {
-        radio_button.checked = true;
+        radio_button_elem.checked = true;
       }
-      form.append(label); 
-      label.appendChild(radio_button); 
-      label.appendChild(text_node); 
+      form.append(label_elem); 
+      label_elem.appendChild(radio_button_elem); 
+      label_elem.appendChild(options_elem); 
     }
   }
-  const button_area_elem = document.createElement('div');
-  button_area_elem.className = "button-wrapper";
-  const result_button = document.createElement('button');
-  result_button.id = 'result-button';
-  result_button.innerText = "診断結果を見る";
-  button_area_elem.append(result_button);
+
+  // 診断結果表示ボタンを追加
+  const button_area_elem = create_element('div', '', 'button-wrapper', '');
+  const result_button_elem = create_element('button', 'result-button', '', '診断結果を見る');
+  button_area_elem.append(result_button_elem);
   fragment.append(button_area_elem);
 
+  // 診断結果を表示するresult.jsの呼び出し
   const result_js = document.createElement('script');
   result_js.src = "result.js";
   fragment.append(result_js);

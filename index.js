@@ -18,54 +18,48 @@ window.onload = function() {
   const index_fragment = new DocumentFragment();
   
   // ページの概要説明を追加
-  const description_elem_about_page = document.createElement('p');
-  description_elem_about_page.innerText = "あなたのコミュニケーションタイプを診断することができます。";
-  index_fragment.append(description_elem_about_page);
+  const page_desc = "あなたのコミュニケーションタイプを診断することができます。";
+  const page_desc_elem = create_element('p', '', '', page_desc);
+  index_fragment.append(page_desc_elem);
 
   // コミュニケーションタイプについての説明を追加
-  const h2_elem_about_type = document.createElement('h2');
-  h2_elem_about_type.innerText = "コミュニケーションタイプとは？";
-  const description_elem_about_type = document.createElement('p');
-  description_elem_about_type.innerText = "自己主張の強さと感情の開放度の2軸で人間のコミュニケーションの特性を4つに分類して分析する手法です。アメリカの産業心理学者、デビット・メリル氏によって提唱されました。";
-  index_fragment.append(h2_elem_about_type);
-  index_fragment.append(description_elem_about_type);
+  const h2_title_1st = "コミュニケーションタイプとは？";
+  const h2_elem_1st = create_element('h2', '', '', h2_title_1st);
+  index_fragment.append(h2_elem_1st);
+
+  const asesssment_desc = "自己主張の強さと感情の開放度の2軸で人間のコミュニケーションの特性を4つに分類して分析する手法です。アメリカの産業心理学者、デビット・メリル氏によって提唱されました。";
+  const asesssment_desc_elem = create_element('p', '', '', asesssment_desc);
+  index_fragment.append(asesssment_desc_elem);
 
   // 4つのタイプについての説明を追加
-  const h2_elem_about_4types = document.createElement('h2');
-  h2_elem_about_4types.innerText = "4つのタイプ";
-  index_fragment.append(h2_elem_about_4types);
+  const h2_title_2nd = "4つのタイプ";
+  const h2_elem_2nd = create_element('p', '', '', h2_title_2nd);
+  index_fragment.append(h2_elem_2nd);
 
   for (let type in communicationtype_list) {
-    const h3_elem_about_type = document.createElement('h3');
-    h3_elem_about_type.innerText = type;
-    const description_elem_about_4types = document.createElement('p');
-    description_elem_about_4types.innerText = communicationtype_list[type];
-    index_fragment.append(h3_elem_about_type);
-    index_fragment.append(description_elem_about_4types);
+    const h3_elem = create_element('h3', '', '', type);
+    const type_desc_elem = create_element('p', '', '', communicationtype_list[type])
+    index_fragment.append(h3_elem);
+    index_fragment.append(type_desc_elem);
   }
 
-  const appendix_elem = document.createElement('div');
-  appendix_elem.id = "appendix";
+  // 補足説明を追加
+  const appendix_elem = create_element('div', 'appendix', '', '');
   const other_type_desc = '一つのタイプが突出していることもあれば、複数を兼ね備えていることもあります。この診断では、上記4つ以外に以下5つのタイプに診断します。';
-  const desc_elem_about_other_type = document.createElement('p');
-  desc_elem_about_other_type.innerText = other_type_desc;
-  appendix_elem.append(desc_elem_about_other_type);
+  const other_type_desc_elem = create_element('p', '', '', other_type_desc);
+  appendix_elem.append(other_type_desc_elem);
 
-  const list_elem = document.createElement('ul');
+  const list_elem = create_element('ul', '', '', '');
   for (let type of other_type_list) {
-    const list_elem_about_other_type = document.createElement('li');
-    list_elem_about_other_type.innerText = type;
-    list_elem.append(list_elem_about_other_type);
+    const type_list_elem = create_element('li', '', '', type);
+    list_elem.append(type_list_elem);
   }
   appendix_elem.append(list_elem);
   index_fragment.append(appendix_elem);
 
   // 診断開始ボタンを追加
-  const button_area_elem = document.createElement('div');
-  button_area_elem.className = "button-wrapper";
-  const start_button = document.createElement('button');
-  start_button.id = 'start-button';
-  start_button.innerText = '診断開始！';
+  const button_area_elem = create_element('div', '', 'button-wrapper', '');
+  const start_button = create_element('button', 'start-button', '', '診断開始！');
   button_area_elem.append(start_button);
   index_fragment.append(button_area_elem);
 
@@ -75,4 +69,3 @@ window.onload = function() {
   index_fragment.append(question_js);
   display_area.append(index_fragment);
 }
-
