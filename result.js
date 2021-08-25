@@ -73,9 +73,10 @@ result_button.onclick = function() {
     より詳しく知りたい方は「コミュニケーションタイプ」や「ソーシャルスタイル」で調べてみてください。`;
   const disclaimer_desc_elem = create_element('p', '', '', disclaimer);
   disclaimer_elem.append(disclaimer_desc_elem);
-  display_area.append(disclaimer_elem);
+  fragment.append(disclaimer_elem);
+  fragment.append(button_area_elem);
 
-  display_area.append(button_area_elem);
+  display_area.append(fragment);
 }
 
 // もう一度診断するボタンを押したら、トップページに戻る
@@ -83,7 +84,5 @@ move_top_button.onclick = function () {
   doReload();
 	window.scroll({top: 0, behavior: 'instant'});
 }  
-
-// <a href="https://twitter.com/intent/tweet?button_hashtag=コミュニケーションタイプ診断&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #コミュニケーションタイプ診断</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
