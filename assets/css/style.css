@@ -11,9 +11,16 @@ PC、タブレット、スマホサイズに対応したレスポンシブデザ
     padding-top: 1rem;
     padding-right: 15%;
     padding-left: 15%;
-  }  
+  }
+  /*トップページの画像のデザイン*/
+  #top-image {
+    display: block;
+    margin: auto;
+    width: 40rem;
+  }
 }
 
+/*タブレット表示*/
 @media screen and (max-width: 767px) and (min-width: 481px) {
   .top {
     margin-left: 10%;
@@ -24,14 +31,27 @@ PC、タブレット、スマホサイズに対応したレスポンシブデザ
     padding-top: 1rem;
     padding-right: 10%;
     padding-left: 10%;
-  }  
+  }
+  /*トップページの画像のデザイン*/
+  #top-image {
+    display: block;
+    margin: auto;
+    width: 30rem;
+  }
 }
 
+/*スマホ表示*/
 @media screen and (max-width: 480px) {
   #display-area {
     padding-top: 1rem;
     padding-right: 3%;
     padding-left: 3%;
+  }
+  /*トップページの画像のデザイン*/
+  #top-image {
+    display: block;
+    margin: auto;
+    width: 100%;
   }
 }
 
@@ -91,14 +111,6 @@ h3::after {
   backface-visibility: hidden;
 }
 
-/*
-トップページの画像のデザイン
-*/
-#top-image {
-  display: block;
-  margin: auto;
-  width: 100%;
-}
 /*
 グラフ表示部分のデザイン
 */
