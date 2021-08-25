@@ -97,7 +97,7 @@ h3::after {
 #top-image {
   display: block;
   margin: auto;
-  width: 25rem;
+  width: 100%;
 }
 /*
 グラフ表示部分のデザイン
