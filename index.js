@@ -33,7 +33,7 @@ window.onload = function() {
 
   // 4つのタイプについての説明を追加
   const h2_title_2nd = "4つのタイプ";
-  const h2_elem_2nd = create_element('p', '', '', h2_title_2nd);
+  const h2_elem_2nd = create_element('h2', '', '', h2_title_2nd);
   index_fragment.append(h2_elem_2nd);
 
   for (let type in communicationtype_list) {
