@@ -80,7 +80,7 @@ start_button.onclick = function () {
 
   // 診断結果を表示するresult.jsの呼び出し
   const result_js = document.createElement('script');
-  result_js.src = "result.js";
+  result_js.src = "./assets/js/result.js";
   fragment.append(result_js);
 
   display_area.append(fragment);

@@ -32,7 +32,7 @@ window.onload = function() {
   index_fragment.append(asesssment_desc_elem);
 
   const image_elem = create_element('img', 'top-image', '', '');
-  image_elem.src = './image/communication-type.jpg';
+  image_elem.src = './assets/image/communication-type.jpg';
   index_fragment.append(image_elem);
 
   // 4つのタイプについての説明を追加
@@ -69,7 +69,7 @@ window.onload = function() {
 
   // 質問項目を記述してあるquestion.jsの呼び出し
   const question_js = document.createElement('script');
-  question_js.src = "question.js";
+  question_js.src = "./assets/js/question.js";
   index_fragment.append(question_js);
   display_area.append(index_fragment);
 }

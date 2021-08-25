@@ -110,7 +110,7 @@ function displayGraph(plot_area, x, y) {
     ctx.fillStyle = "#f72da5a5";
     ctx.fillRect(235 + 35*x, 235 - 35*y, 30, 30);
   };
-  img.src = './image/communication-type-result.png';
+  img.src = './assets/image/communication-type-result.png';
 }
 
 /**
