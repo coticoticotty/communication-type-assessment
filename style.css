@@ -1,3 +1,6 @@
+/*
+PC、タブレット、スマホサイズに対応したレスポンシブデザインに変更
+*/
 @media screen and (min-width: 767px) {
   .top {
     margin-left: 15%;
@@ -32,6 +35,9 @@
   }
 }
 
+/*
+h1~3の見出しのデザイン
+*/
 h1 {
   position: relative;
   padding: 1rem 2rem calc(1rem + 10px);
@@ -85,6 +91,9 @@ h3::after {
   backface-visibility: hidden;
 }
 
+/*
+グラフ表示部分のデザイン
+*/
 canvas {
   display: block;
   border: 1px solid #333;
@@ -94,6 +103,9 @@ canvas {
   margin-top: 2rem;
 }
 
+/*
+トップページ最下部、補足事項についてのデザイン
+*/
 #appendix {
   margin-top: 2rem;
   margin-left: 1%;
@@ -107,6 +119,9 @@ canvas {
   outline-offset: -10px;
 }
 
+/*
+ボタンのデザイン、場面によってカラーは3種類
+*/
 .button-wrapper {
   margin-top: 2rem;
   text-align: center;
@@ -146,10 +161,16 @@ canvas {
   background: #24ae2a;/*ボタン色*/
 }
 
+/*
+ラジオボタンを横並びではなく、縦に並べるための記述
+*/
 .radio-button {
   display:block;
 }
 
+/*
+結果表示ページの免責事項デザイン
+*/
 #disclaimer {
   font-size: 0.8rem;
   margin-top: 2rem;

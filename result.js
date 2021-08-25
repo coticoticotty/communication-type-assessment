@@ -38,11 +38,11 @@ result_button.onclick = function() {
   const {x, y} = calc_coordinates(communicationScore);
   const communication_type = assess_communication_type(x, y);
 
+  // 診断結果の表示
   const h2_elem_result = create_element('h2', '', '', '《診断結果》');
   fragment.append(h2_elem_result);
   const h3_elem_type = create_element('h3', '', '', `あなたは${communication_type}です`);
   fragment.append(h3_elem_type);
-
   const type_desc_elem = create_element('p', '', '', result[communication_type]);
   fragment.append(type_desc_elem);
 
@@ -55,10 +55,9 @@ result_button.onclick = function() {
   fragment.append(plot_area);
   displayGraph(plot_area, x, y);
 
-
+  // スコアの詳細を表示
   const h3_elem_score = create_element('h3', '', '', 'スコア');
   fragment.append(h3_elem_score);
-
   const score_area_elem = create_element('ul', '', '', '');
   fragment.append(score_area_elem);
   for (let key in communicationScore) {
@@ -67,6 +66,7 @@ result_button.onclick = function() {
   }
   display_area.append(fragment);
 
+  // 免責事項の表示
   const disclaimer_elem = create_element('div', 'disclaimer', '', '');
   const disclaimer = `【免責事項】
     当サイトの情報・診断について、さまざまな情報を参照し作成しておりますが、正確性を保証するものではありません。また、当サイトに掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。
@@ -78,6 +78,7 @@ result_button.onclick = function() {
   display_area.append(button_area_elem);
 }
 
+// もう一度診断するボタンを押したら、トップページに戻る
 move_top_button.onclick = function () {
   doReload();
 	window.scroll({top: 0, behavior: 'instant'});
