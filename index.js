@@ -31,6 +31,10 @@ window.onload = function() {
   const asesssment_desc_elem = create_element('p', '', '', asesssment_desc);
   index_fragment.append(asesssment_desc_elem);
 
+  const image_elem = create_element('img', 'top-image', '', '');
+  image_elem.src = './image/communication-type.jpg';
+  index_fragment.append(image_elem);
+
   // 4つのタイプについての説明を追加
   const h2_title_2nd = "4つのタイプ";
   const h2_elem_2nd = create_element('h2', '', '', h2_title_2nd);
